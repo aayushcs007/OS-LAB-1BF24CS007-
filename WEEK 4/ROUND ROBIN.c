@@ -27,7 +27,7 @@ int main()
     printf("\nEnter Time Quantum: ");
     scanf("%d", &tq);
 
-    // Sort processes by arrival time
+    
     for(int i = 0; i < n - 1; i++)
     {
         for(int j = 0; j < n - i - 1; j++)
@@ -87,7 +87,6 @@ int main()
             sumRT += (start[i] - at[i]);
         }
 
-        // Add newly arrived processes (in correct order)
         for(int j = 0; j < n; j++)
         {
             if(at[j] <= time && visited[j] == 0)
@@ -97,13 +96,12 @@ int main()
             }
         }
 
-        // Push back if not finished
+       
         if(rt[i] > 0)
         {
             queue[rear++] = i;
         }
 
-        // If queue empty → jump to next arrival
         if(front == rear)
         {
             for(int j = 0; j < n; j++)
@@ -121,7 +119,6 @@ int main()
 
     ganttT[g] = time;
 
-    // Gantt Chart
     printf("\nGantt Chart:\n|");
     for(int i = 0; i < g; i++)
         printf(" P%d |", ganttP[i]);
@@ -130,7 +127,7 @@ int main()
     for(int i = 1; i <= g; i++)
         printf("   %d", ganttT[i]);
 
-    // Table
+ 
     printf("\n\nProcess\tAT\tBT\tCT\tTAT\tWT\tRT");
     for(int i = 0; i < n; i++)
     {
